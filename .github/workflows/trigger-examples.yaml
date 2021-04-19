@@ -1,0 +1,25 @@
+name: "Trigger barnard59-examples tests"
+on:
+  push:
+
+jobs:
+  trigger:
+    name: Trigger
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.CROSS_REPO_TRIGGERS_APP_ID }}
+          private_key: ${{ secrets.CROSS_REPO_TRIGGERS_PRIVATE_KEY }}
+          repository: zazuko/barnard59-examples
+
+      - name: Trigger CI workflow on zazuko/barnard59-examples
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: CI
+          repo: zazuko/barnard59-examples
+          ref: init # TODO: switch to `main`
+          token: ${{ steps.generate_token.outputs.token }}
+          inputs: '{ "package-overrides": "github:${{ github.repository }}#${{ github.sha }}" }'
