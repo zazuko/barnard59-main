@@ -23,6 +23,13 @@
   },
   "homepage": "https://github.com/zazuko/barnard59",
   "dependencies": {
+    "@opentelemetry/api": "^1.0.0",
+    "@opentelemetry/exporter-collector": "^0.22.0",
+    "@opentelemetry/instrumentation-http": "^0.22.0",
+    "@opentelemetry/instrumentation-winston": "^0.22.0",
+    "@opentelemetry/resources": "^0.22.0",
+    "@opentelemetry/sdk-node": "^0.22.0",
+    "@opentelemetry/semantic-conventions": "^0.22.0",
     "@rdfjs/namespace": "^1.1.0",
     "barnard59-core": "^1.0.0",
     "clownface": "^1.2.0",

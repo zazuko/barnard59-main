@@ -88,7 +88,10 @@ describe('barnard59', () => {
     })
   })
 
-  describe('examples', () => {
+  describe('examples', function () {
+    // Examples can be a bit slow to run
+    this.timeout(5000)
+
     it('should run the fetch-json-to-ntriples.json example without error', () => {
       const pipelineFile = (new URL('../examples/fetch-json-to-ntriples.json', import.meta.url)).pathname
       const command = `${barnard59} run --pipeline=http://example.org/pipeline/cet ${pipelineFile}`
